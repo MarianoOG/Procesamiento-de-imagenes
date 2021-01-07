@@ -1,0 +1,21 @@
+clc,clear all, close all,
+video = videoinput('winvideo', 1, 'yuy2_640x480');
+set(video,'ReturnedColorSpace','rgb');
+preview(video);
+pause;
+
+fondo=getsnapshot(video);
+fondo=double(fondo);
+imshow(fondo);
+
+for i=1:10
+    foto=getsnapshot(video);
+    foto=double(foto);
+    numero=num2str(i);
+    nombre=strcat('naranjas',numero,'.jpg');
+    imwrite(foto,nombre);
+    pause;
+    imshow(foto);
+end
+
+delete(video);
